@@ -1,20 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AnimatedTab.MainPage">
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" />
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10" />
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0" />
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at " />
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold" />
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AnimatedTab.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:AnimatedTab.Controls"
+    xmlns:icons="clr-namespace:AnimatedTab.Font"
+    BackgroundColor="#FFFFFF">
+    <Grid RowDefinitions="80*,20*">
+        <Grid Background="#000000" />
+        <Grid
+            Grid.Row="1"
+            BackgroundColor="#FFFFFF"
+            ColumnDefinitions="25*,25*,25*,25*">
+            <c:TabItem Grid.Column="0" CurrentText="{x:Static icons:IconFont.list}" />
+            <c:TabItem Grid.Column="1" CurrentText="{x:Static icons:IconFont.list}" />
+            <c:TabItem Grid.Column="2" CurrentText="{x:Static icons:IconFont.list}" />
+            <c:TabItem Grid.Column="3" CurrentText="{x:Static icons:IconFont.list}" />
+        </Grid>
+    </Grid>
 </ContentPage>

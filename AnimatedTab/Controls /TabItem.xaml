@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="AnimatedTab.Controls.TabItem"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:icons="clr-namespace:AnimatedTab.Font">
+    <Grid>
+        <Label
+            x:Name="CurrentLabel"
+            FontFamily="icomoon"
+            FontSize="16"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="{x:Static icons:IconFont.list}"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+        <Label
+            x:Name="NextLabel"
+            FontSize="16"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            Opacity="0"
+            Text="Home"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer
+                x:Name="Item"
+                NumberOfTapsRequired="1"
+                Tapped="Menu_Tapped" />
+        </Grid.GestureRecognizers>
+    </Grid>
+</ContentView>
