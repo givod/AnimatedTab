@@ -12,10 +12,22 @@
             Grid.Row="1"
             BackgroundColor="#FFFFFF"
             ColumnDefinitions="25*,25*,25*,25*">
-            <c:TabItem Grid.Column="0" CurrentText="{x:Static icons:IconFont.list}" />
-            <c:TabItem Grid.Column="1" CurrentText="{x:Static icons:IconFont.list}" />
-            <c:TabItem Grid.Column="2" CurrentText="{x:Static icons:IconFont.list}" />
-            <c:TabItem Grid.Column="3" CurrentText="{x:Static icons:IconFont.list}" />
+            <c:TabItem
+                Grid.Column="0"
+                CurrentText="{x:Static icons:IconFont.list}"
+                NextText="Home" />
+            <c:TabItem
+                Grid.Column="1"
+                CurrentText="{x:Static icons:IconFont.bookmark}"
+                NextText="bookmark" />
+            <c:TabItem
+                Grid.Column="2"
+                CurrentText="{x:Static icons:IconFont.search}"
+                NextText="search" />
+            <c:TabItem
+                Grid.Column="3"
+                CurrentText="aA"
+                NextText="font" />
         </Grid>
     </Grid>
 </ContentPage>

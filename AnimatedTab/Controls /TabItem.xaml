@@ -2,32 +2,39 @@
 <ContentView
     x:Class="AnimatedTab.Controls.TabItem"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:icons="clr-namespace:AnimatedTab.Font">
-    <Grid>
-        <Label
-            x:Name="CurrentLabel"
-            FontFamily="icomoon"
-            FontSize="16"
-            HorizontalOptions="FillAndExpand"
-            HorizontalTextAlignment="Center"
-            Text="{x:Static icons:IconFont.list}"
-            VerticalOptions="FillAndExpand"
-            VerticalTextAlignment="Center" />
-        <Label
-            x:Name="NextLabel"
-            FontSize="16"
-            HorizontalOptions="FillAndExpand"
-            HorizontalTextAlignment="Center"
-            Opacity="0"
-            Text="Home"
-            VerticalOptions="FillAndExpand"
-            VerticalTextAlignment="Center" />
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer
-                x:Name="Item"
-                NumberOfTapsRequired="1"
-                Tapped="Menu_Tapped" />
-        </Grid.GestureRecognizers>
-    </Grid>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Frame
+        Padding="0"
+        BorderColor="White"
+        CornerRadius="30"
+        HasShadow="False"
+        HeightRequest="60"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="60">
+        <Grid>
+            <Label
+                x:Name="CurrentLabel"
+                FontFamily="icomoon"
+                FontSize="14"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+            <Label
+                x:Name="NextLabel"
+                FontSize="7"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                Opacity="0"
+                VerticalOptions="FillAndExpand"
+                VerticalTextAlignment="Center" />
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    x:Name="Item"
+                    NumberOfTapsRequired="1"
+                    Tapped="Menu_Tapped" />
+            </Grid.GestureRecognizers>
+        </Grid>
+    </Frame>
 </ContentView>

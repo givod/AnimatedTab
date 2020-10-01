@@ -8,6 +8,7 @@ namespace AnimatedTab.Controls
         public Label Current { get; set; }
         public Label Next { get; set; }
         public Point AnimationOffset { get; set; }
+        private bool tapped;
 
         public static readonly BindableProperty CurrentTextProperty = BindableProperty.Create(nameof(CurrentText), typeof(string), typeof(TabItem), default(string), propertyChanged: OnTextChanged);
 
@@ -79,6 +80,15 @@ namespace AnimatedTab.Controls
 
             CurrentLabel.Text = CurrentText;
             NextLabel.Text = NextText;
+
+            MessagingCenter.Subscribe<TabItem>(this, "tapped", (sender) =>
+            {
+                if (tapped)
+                {
+                    AnimateDownText();
+                    tapped = false;
+                }
+            });
         }
 
         async void AnimateUpText()
@@ -91,27 +101,59 @@ namespace AnimatedTab.Controls
 
             // set the starting positions
             Current.TranslationY = 0;
-            _ = Current.TranslateTo(0, -50);
+            _ = Current.TranslateTo(0, -25);
             _ = Current.FadeTo(0);
 
             // animate in the next label
             Next.Text = NextLabel.Text;
-            Next.TranslationY = AnimationOffset.Y;
+            Next.TranslationY = 25;
             Next.TranslationX = AnimationOffset.X;
             Next.Opacity = 0;
             _ = Next.TranslateTo(0, 0);
             await Next.FadeTo(1);
 
             // recycle the views
-            Current = NextLabel;
-            Next = CurrentLabel;
+            //Current = NextLabel;
+            //Next = CurrentLabel;
+        }
+
+        async void AnimateDownText()
+        {
+            // update the labels
+            Next.Text = NextLabel.Text;
+            Next.TranslationY = 0;
+            Next.TranslationX = 0;
+            Next.Opacity = 1;
+
+            // set the starting positions
+            Next.TranslationY = 0;
+            _ = Next.TranslateTo(0, 25);
+            _ = Next.FadeTo(0);
+
+            // animate in the next label
+            Current.Text = CurrentLabel.Text;
+            Current.TranslationY = -25;
+            Current.TranslationX = AnimationOffset.X;
+            Current.Opacity = 0;
+            _ = Current.TranslateTo(0, 0);
+            await Current.FadeTo(1);
         }
 
         void Menu_Tapped(System.Object sender, System.EventArgs e)
         {
+            MessagingCenter.Send<TabItem>(this, "tapped");
             try
             {
-                AnimateUpText();
+                if (tapped)
+                {
+                    AnimateDownText();
+                    tapped = false;
+                }
+                else
+                {
+                    AnimateUpText();
+                    tapped = true;
+                }
             }
             catch (Exception ex)
             {

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
+using TouchEffect.iOS;
 using UIKit;
 
 namespace AnimatedTab.iOS
@@ -22,6 +19,7 @@ namespace AnimatedTab.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            TouchEffectPreserver.Preserve();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
